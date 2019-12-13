@@ -1,9 +1,9 @@
 #!/usr/bin/env/python
 
-from itertools import combinations
+from itertools import product
 from typing import Any, Dict, List, Tuple
-import pulp
 import argparse
+from feasibleSupportChecker import feasibleSupportChecker as fsc
 
 
 def getCoordinates(n: int):
@@ -14,13 +14,13 @@ def getCoordinates(n: int):
     yield from range(1, n+1)
 
 
-def someSupport(n, d, s):
+def anySupport(n, d, s):
     """
         checks over the square with corners (+/- n, +/- n) \ coordinateaxes to 
         see if there's a distribution that works
     """
     points = [point for point in product([x for x in getCoordinates(n)], repeat = s)]   
-    feasible = fsc.isFeasible(points, d, s)
+    feasible, distr = fsc.isFeasible(points, d, s)
     if feasible is True:
         print("Found a feasible support set for d = ", d, "n =", n)
         print(distr)
@@ -40,7 +40,7 @@ if __name__ == "__main__":
     s = args.s
 
     for n in range(n_min, n_max+1):
-        someSupport(n, d, s)
+        anySupport(n, d, s)
         
         
 
