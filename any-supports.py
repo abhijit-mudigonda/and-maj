@@ -16,7 +16,7 @@ def getCoordinates(n: int):
 
 def anySupport(n, d, s):
     """
-        checks over the square with corners (+/- n, +/- n) \ coordinateaxes to 
+        checks over the s-dimensional hypercube with corners (+/- n, +/- n, ...) \ coordinateaxes to 
         see if there's a distribution that works
     """
     points = [point for point in product([x for x in getCoordinates(n)], repeat = s)]   
@@ -42,7 +42,3 @@ if __name__ == "__main__":
     for n in range(n_min, n_max+1):
         anySupport(n, d, s)
         
-        
-
-
-

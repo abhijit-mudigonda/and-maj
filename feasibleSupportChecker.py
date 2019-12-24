@@ -58,5 +58,3 @@ class feasibleSupportChecker:
                 if w[i].varValue != 0:
                     distr.append((points[i], w[i].varValue))
             return (True, distr)
-
-
