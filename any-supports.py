@@ -20,10 +20,12 @@ def anySupport(n, d, s):
         see if there's a distribution that works
     """
     points = [point for point in product([x for x in getCoordinates(n)], repeat = s)]   
-    feasible, distr = fsc.isFeasible(points, d, s)
+    feasible, distr = fsc.isFeasible_gurobi(points, d, s)
     if feasible is True:
         print("Found a feasible support set for d = ", d, "n =", n)
         print(distr)
+    else: 
+        print("Failed to find a feasible support set")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -40,5 +42,6 @@ if __name__ == "__main__":
     s = args.s
 
     for n in range(n_min, n_max+1):
+        print("Trying n = ", n)
         anySupport(n, d, s)
         
