@@ -4,6 +4,7 @@ from itertools import combinations
 from typing import Any, Dict, List, Tuple
 import argparse
 import math
+from scipy.special import comb
 
 def subsetGenerator(a: List[Any], r: int) -> List[Any]:
     yield from combinations(a, r)
@@ -12,6 +13,7 @@ if __name__ == "__main__":
     """
         n: the largest coordinate of any support point
         d: the degree of PTF we're testing against
+        s
 
         return: 
 
@@ -22,7 +24,7 @@ if __name__ == "__main__":
     D = math.ceil((d+1)*(d+2)/2)
     subsets = []
     for subset in subsetGenerator(points, D):
-        if isFeasible(subset, d) is True:
+        if isFeasible(subset,d) is True:
             subsets.append(subset)
             print(subset)
     return subsets

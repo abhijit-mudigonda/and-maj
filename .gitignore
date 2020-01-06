@@ -1,3 +1,4 @@
 gurobi_install.sh
 env/*
 __pycache__/*
+*.txt
