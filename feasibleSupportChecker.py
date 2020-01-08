@@ -24,6 +24,8 @@ class feasibleSupportChecker:
             to which the correlation of AND-MAJ with every monomial is 0
         """
         import gurobipy as grb
+
+        N = len(points) 
         problem = grb.Model(name="iwonderwhatthisdoes")
         w = { i: problem.addVar(vtype=grb.GRB.CONTINUOUS, lb=0, ub=1, name="x_{0}".format(i)) for i in range(N) }
 
@@ -48,13 +50,15 @@ class feasibleSupportChecker:
 
         problem.optimize()
 
-        if problem.status == GRB.INFEASIBLE:
+        #3 is the status code for INFEASIBLE
+        #2 is OPTIMAL
+        if problem.status == 3:
             return (False, [])
         else:
             distr = []
             for i in range(N):
-                if w[i].varValue != 0:
-                    distr.append((points[i], w[i].varValue))
+                if w[i].X != 0:
+                    distr.append((points[i], w[i].X))
             return (True, distr)
 
     @staticmethod

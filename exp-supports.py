@@ -16,7 +16,7 @@ if __name__ == "__main__":
     h = 2
     while(d <= args.d_max):
         points = [tuple(((-1)**int(signs[a]))*(h**int(exps[a])) for a in range(s)) for signs in product([0,1], repeat = s) for exps in product(range(d+1), repeat = s)]
-        feasible, distr = fsc.isFeasible(points,d,s)
+        feasible, distr = fsc.isFeasible_gurobi(points,d,s)
         if feasible is True:
             print("Found a feasible support set for d = ", d, " with n = ", h**d) 
             print(distr)

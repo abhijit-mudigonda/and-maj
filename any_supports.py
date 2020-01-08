@@ -4,6 +4,7 @@ from itertools import product
 from typing import Any, Dict, List, Tuple
 import argparse
 from feasibleSupportChecker import feasibleSupportChecker as fsc
+import time
 
 
 def getCoordinates(n: int):
@@ -56,5 +57,8 @@ if __name__ == "__main__":
 
     for n in range(n_min, n_max+1):
         print("Trying n = ", n)
+        t0 = time.time()
         anySupport(n, d, s, solver)
+        t1 = time.time()
+        print("Took time ", t1-t0)
         
