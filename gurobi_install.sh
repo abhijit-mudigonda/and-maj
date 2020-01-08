@@ -1,6 +1,8 @@
 #Hi Yilun!
 
 ENTERKEYHERE=ifyouareseeingthismessageputyourgurobikeyhere
+INSTALLDIR=putyourinstalldirhere
+
 wget https://packages.gurobi.com/9.0/gurobi9.0.0_linux64.tar.gz
 
 md5hash=$(md5sum gurobi9.0.0_linux64.tar.gz | awk '{print $1;}')
@@ -18,9 +20,9 @@ source .bashrc
 
 grbgetkey $ENTERKEYHERE
 
-cd ${HOME}/gurobi900/linux64
+cd ${INSTALLDIR}/gurobi900/linux64
 sudo python setup.py install
-cd ${HOME}
+cd ${INSTALLDIR}
 
 echo "Installation of gurobi should be done."
 
