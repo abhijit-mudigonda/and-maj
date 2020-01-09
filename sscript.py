@@ -18,14 +18,13 @@ if __name__ == "__main__":
 
     f = open("out.txt", "a")
     n = 23
+
     for s in range(s_min, s_max):
         if anySupport(n,2,s,solver) is True:
             print("s = {0}, n = {1}".format(s,n))
             f.write("s = {0}, n = {1}\n".format(s,n))
-            s += 1
             n -= 1
         else:
             print("s = {0}, n = {1}".format(s,n+1))
             f.write("s = {0}, n = {1}\n".format(s,n+1))
-            s += 1
     f.close()

@@ -34,7 +34,7 @@ def anySupport(n, d, s, solver):
         return True
     else: 
         print("Failed to find a feasible support set")
-        return True
+        return False
 
 
 if __name__ == "__main__":
